@@ -9,8 +9,13 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  },
-});
+  }
+},
+{
+  timestamps: true,
+  versionKey: false, // Here You have to add.
+}
+);
 
  export const UserModel = mongoose.model('Ehsan', UserSchema);
 

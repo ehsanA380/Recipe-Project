@@ -4,11 +4,13 @@ import bcrypt from "bcrypt";
 import {UserModel} from "../modules/UserModel.js";// use .js extension after User
 
 const router = express.Router();
+//router for GUI
 
 router.post("/register",async (req,res)=>{
   const {username , password}=req.body;
   // const user =   await UserModel.insertOne({userame:username,password:password});
   const userDoc = new UserModel({username,password});
+  console.log(req.body)
   try{
     const saveData=await userDoc.save();
     if (saveData) {
@@ -23,11 +25,9 @@ router.post("/register",async (req,res)=>{
   
 });
 
- 
-
 router.get("/login",async (req,res)=>{
-   const d = await  UserModel.find();
-   console.log(req.body);
+   const d = await  UserModel.findOne();
+  //  console.log(req.body);
   res.json(d)
 })
 
