@@ -1,0 +1,28 @@
+h2.heading{
+    text-decoration: none;
+    color: red;
+    margin-top: 5px;
+}
+
+.recipe-container{
+    border: 2px solid black;
+    border-radius: 7px;
+}
+
+.recipe-heading{
+    text-decoration: none;
+    font-weight: 700;
+    /* background-color: gray; */
+    text-align: left;
+
+}
+
+.instructions p{
+    font-size: 15px;
+}
+
+img{
+   max-width: 100%; 
+   max-height: 250px;
+   /* image-orientation: from-image; */
+}
