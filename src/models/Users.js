@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  }
+  },
+  savedRecipes:[{type:mongoose.Schema.Types.ObjectId, ref: "recipes"} ],
 },
 {
   // timestamps: true,
@@ -17,6 +18,6 @@ const UserSchema = new mongoose.Schema({
 }
 );
 
- export const UserModel = mongoose.model('Ehsan', UserSchema);
+ export const UserModel = mongoose.model('users', UserSchema);
 
  

@@ -1,7 +1,7 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import {UserModel} from '../modules/UserModel.js' // dont forget to add .js extension other wise it throw an error 
+import {UserModel} from '../models/Users.js' // dont forget to add .js extension other wise it throw an error 
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.post('/register', async (req,res)=>{
   if(user){
     return res.json({message:"user already exists!"})
   }
-  // decritpting the password
+  // encrypting the password
   const hashedPassword = await bcrypt.hash(password,10);
 // saving the document into the database {username,password}
   const newUser = new UserModel({username,password: hashedPassword});
@@ -40,14 +40,15 @@ router.post('/login', async (req,res)=>{
     res.json({token,userID:user._id,name:user.username,message:"logged in successfully!",loggedStatus:true})
 
   }
-})
+});
 
+// exporting the router with alias userRouter
 
 export {router as userRouter}
 
-
-
-
+export const verifyToken = (req, res, next ) =>{
+  
+}
 
 
 
