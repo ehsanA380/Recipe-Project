@@ -12,7 +12,7 @@ export const Home = () => {
     useEffect(()=>{
       const fetchRecipe = async () =>{
         try {
-          const response = await axios.get("http://localhost:3001/recipes");
+          const response = await axios.get("https://recipe-project-1.onrender.com/recipes");
           setRecipes(response.data);
         } catch (err) {
           console.error(err);
@@ -22,7 +22,7 @@ export const Home = () => {
         const fetchSavedRecipe = async () =>{
         try {
           const response = await axios.get(
-            `http://localhost:3001/recipes/savedRecipes/ids/${userID}`);
+            `https://recipe-project-1.onrender.com/recipes/savedRecipes/ids/${userID}`);
             setSavedRecipes(response.data.savedRecipes);
             // console.log(savedRecipes);
         } catch (err) {
@@ -39,7 +39,7 @@ export const Home = () => {
     
     const saveRecipe=async(recipeID)=>{
       try {
-        const response = await axios.put('http://localhost:3001/recipes',{
+        const response = await axios.put('https://recipe-project-1.onrender.com/recipes',{
           recipeID,userID
         });
         if (savedRecipes=='null') {
