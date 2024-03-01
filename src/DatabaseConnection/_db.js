@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 // database connection 
 async function db() {
- const conn= await mongoose.connect("mongodb://127.0.0.1:27017/recipes");
+ const connpath ="mongodb+srv://ehsanansari123123:gC6T6n71wzjhhixN@mernstactappdatabase.yprxhlw.mongodb.net/?retryWrites=true&w=majority"
+ const conn= await mongoose.connect(connpath);
  
     if(conn){
         console.log("db connected",mongoose.connection.readyState);
