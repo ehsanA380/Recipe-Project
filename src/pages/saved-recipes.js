@@ -14,6 +14,7 @@ export const SavedRecipes = () => {
           const response = await axios.get(
             `http://localhost:3001/recipes/savedRecipes/${userID}`);
           setSavedRecipes(response.data);
+          console.log(response.data);
 
           // console.log(response.data);
         } catch (err) {
@@ -23,13 +24,15 @@ export const SavedRecipes = () => {
 
      
       fetchSavedRecipe();
-    },[])
+    },[userID]) // <== userID nahi bhi daloge to koyi effect nahi padega
     
    
   return (
     <div>
       <h2 className="heading">Saved Recipes</h2>
       <ul >
+        {(savedRecipes.length===0)?<><img src="https://th.bing.com/th/id/OIP.zNSushECF2RtBNW0mGGfqgHaF7?rs=1&pid=ImgDetMain"/>
+        </>:<></>}
         {savedRecipes.map((recipe)=>(
           <li key={recipe._id}className="recipe-container">
            

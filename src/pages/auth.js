@@ -33,7 +33,7 @@ const Login =()=>{
                 navigate("/")
             }
         }catch(err){
-
+            alert("Unable to connecting database")
         }
     }
 
