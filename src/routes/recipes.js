@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose'
 import {RecipeModel} from '../models/Recipes.js';
 import {UserModel } from '../models/Users.js';
+import { verifyToken } from './users.js';
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.get("/",async(req,res)=>{
     }
 });
 
-router.post("/create",async(req,res)=>{
+router.post("/create",verifyToken ,async(req,res)=>{
     const recipe =new RecipeModel({...req.body});
     try{
         const response = await recipe.save();
@@ -24,23 +25,28 @@ router.post("/create",async(req,res)=>{
     }
 });
 
-router.put("/",async(req,res)=>{
+router.put("/",async(req,res)=>{  
     try {
         const recipe = await  RecipeModel.findById(req.body.recipeID);
         const user = await  UserModel.findById(req.body.userID);
         user.savedRecipes.push(recipe);
         await user.save();
-        res.json({savedRecipes:user.savedRecipes})
+        // if(user.savedRecipes[0]){
+            res.json({savedRecipes:user.savedRecipes})
+            // console.log(recipe,user);
+        // }
+        
         
     } catch (err) {
         res.json(err)
+        console.log(err)
     }
 });
 
 router.get("/savedRecipes/ids/:userID",async(req,res)=>{
     try {
         const user = await UserModel.findById(req.params.userID);
-        res.json({savedRecipes: user?.savedRecipes });
+        res.json({savedRecipes: user.savedRecipes });
     } catch (err) {
         res.json(err);
     }
@@ -57,7 +63,5 @@ router.get("/savedRecipes/:userID",async(req,res)=>{
         res.json(err);
     }
 })
-
-
 
 export {router as recipeRouter}

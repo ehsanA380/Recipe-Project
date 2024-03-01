@@ -47,7 +47,20 @@ router.post('/login', async (req,res)=>{
 export {router as userRouter}
 
 export const verifyToken = (req, res, next ) =>{
-  
+  const token = req.headers.authorization;
+  if(token){
+    jwt.verify(token,"secrect",(err)=>{
+      if(err){
+        //  return ()
+        alert("athentication failed!")
+        return res.sendStatus(403)
+      }
+      next();
+    })
+  }else{
+    console.log('authorization failed');
+    res.sendStatus(401)
+  }
 }
 
 
