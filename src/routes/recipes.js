@@ -19,9 +19,9 @@ router.post("/create",verifyToken ,async(req,res)=>{
     const recipe =new RecipeModel({...req.body});
     try{
         const response = await recipe.save();
-        res.json(response)
+        res.json({response,msg:"Recipe Created"})
     }catch(err){
-        res.json(err);
+        res.json({err,msg:"all fields are required"});
     }
 });
 
