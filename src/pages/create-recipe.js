@@ -41,7 +41,7 @@ export const CreateRecipe = ()=>{
            const response= await axios.post("https://recipe-project-1.onrender.com/recipes/create",recipe,
                { headers:{authorization : cookies.access_token}}
             );
-            alert('recipe created')
+            alert(response.data.msg)
             navigate('/')
         } catch (err) {
 
