@@ -38,7 +38,7 @@ export const CreateRecipe = ()=>{
     const onSubmit = async (event)=>{
         event.preventDefault();
         try {
-           const response= await axios.post("http://localhost:3001/recipes/create",recipe,
+           const response= await axios.post("https://recipe-project-1.onrender.com/recipes/create",recipe,
                { headers:{authorization : cookies.access_token}}
             );
             alert('recipe created')
@@ -47,8 +47,6 @@ export const CreateRecipe = ()=>{
 
             console.log(err);
         }
-        
-
     }
     return(
         <div className="auth savedRecipe-container"> 
