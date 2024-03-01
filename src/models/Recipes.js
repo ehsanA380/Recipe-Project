@@ -8,7 +8,7 @@ const RecipesSchema = new mongoose.Schema({
     ingredients:[{type:String,required:true}],
     instructions:{type:String,required:true},
     imageURL:{type:String,required:true},
-    cookingTime:{type:Number,required:true},
+    cookingTime:{type:String,required:true},
     userOwner:{type:mongoose.Schema.Types.ObjectId,
         ref:"users",
         required:true}
