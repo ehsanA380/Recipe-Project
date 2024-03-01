@@ -21,7 +21,7 @@ const Login =()=>{
     const onSubmit  = async(event)=>{
         event.preventDefault(); //  taki jab submit button click ho to page reload na ho
         try{
-            const response=await axios.post('http://localhost:3001/auth/login',{
+            const response=await axios.post('https://recipe-project-1.onrender.com/auth/login',{
                 username,password
             });
             alert(response.data.message)
@@ -55,7 +55,7 @@ const Register =()=>{
     const onSubmit =async (event)=>{
         event.preventDefault();//  taki jab submit button click ho to page reload na ho
         try{
-            const response= await axios.post('http://localhost:3001/auth/register',{
+            const response= await axios.post('https://recipe-project-1.onrender.com/auth/register',{
                 username,password
             });
 
